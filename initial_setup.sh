@@ -1,11 +1,13 @@
 
+WKDIR=`pwd`
+
 # install dependencies
 sudo apt-get autoremove -y \
 && sudo apt-get autoclean -y \
 && sudo apt-get update && sudo apt-get -y upgrade \
 && sudo apt-get install -y apt-transport-https mosquitto bc dnsmasq hostapd vim python3-flask python3-requests git dirmngr;
 
-# install java
+echo "install java"
 sudo su;
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 \
 && echo 'deb http://repos.azulsystems.com/debian stable main' > /etc/apt/sources.list.d/zulu.list \
@@ -27,7 +29,7 @@ wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' 
 # needs reboot but next step will do this
 
 # install LCD
-cd ~
+cd $WKDIR
 sudo rm -rf LCD-show
 git clone https://github.com/goodtft/LCD-show.git
 chmod -R 755 LCD-show
