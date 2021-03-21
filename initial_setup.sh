@@ -8,12 +8,11 @@ sudo apt-get autoremove -y \
 && sudo apt-get install -y apt-transport-https mosquitto bc dnsmasq hostapd vim python3-flask python3-requests git dirmngr;
 
 echo "install java"
-sudo su;
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 \
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 \
 && echo 'deb http://repos.azulsystems.com/debian stable main' > /etc/apt/sources.list.d/zulu.list \
-&& apt-get update -qq \
-&& apt purge -y *java* \
-&& apt-get install -y zulu-embedded-8 \
+&& sudo apt-get update -qq \
+&& sudo apt purge -y *java* \
+&& sudo apt-get install -y zulu-embedded-8 \
 && java -version;
 
 # install OpenHab
