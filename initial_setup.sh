@@ -32,7 +32,7 @@ sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xini
 sudo apt-get install --no-install-recommends chromium-browser -y
 sudo apt --fix-broken install -y
 sudo cp autostart /etc/xdg/openbox/autostart
-echo "[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor" ~/.bash_profile
+echo "[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor" >> ~/.bash_profile
 
 
 # install LCD
@@ -43,6 +43,7 @@ chmod -R 755 LCD-show
 cd LCD-show/
 sudo dpkg -i -B xinput-calibrator_0.7.5-1_armhf.deb
 sudo apt --fix-broken install -y
+cat 99-calibration.conf >> /etc/X11/xorg.conf.d/99-calibration.conf
 sudo ./LCD35-show # will reboot system need solution to trigger stage 2
 
 # install LCD calibration
